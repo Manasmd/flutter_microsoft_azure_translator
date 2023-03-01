@@ -11,11 +11,13 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-This package allows you to quickly set up Microsoft Azure Translator for Flutter. All you need is your `Ocp-Apim-Subscription-Key` & `
+This package allows you to quickly set up Microsoft Azure Translator for Flutter. 
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Implement translation out of the box
+- Suitable for languages like Cantonese that does not work well in Google translate
+- All you need is your `Ocp-Apim-Subscription-Key` & `Ocp-Apim-Subscription-Region` from Azure
 
 ## Getting started
 

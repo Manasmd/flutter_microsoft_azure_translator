@@ -1,22 +1,16 @@
 library microsoft_azure_translator;
 
 import 'dart:convert';
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as httpClient;
+import 'package:http/http.dart' as http_client;
 
 /// A Calculator.
 class MicrosoftAzureTranslator {
-  /// Returns [value] plus 1.
   static final MicrosoftAzureTranslator instance = MicrosoftAzureTranslator._internal();
 
   late String _subscriptionKey;
   late String _subscriptionRegion;
 
-  MicrosoftAzureTranslator._internal() {
-    print('Microsoft Azure Translator instance has been created');
-  }
+  MicrosoftAzureTranslator._internal();
 
   get getSubscriptionKey => _subscriptionKey;
 
@@ -29,7 +23,6 @@ class MicrosoftAzureTranslator {
   }
 
   Future<List<dynamic>?> translate(String text, String fromLanguageCode, String toLanguageCode) async {
-    print('running translate funtion in package...');
     String domain = "api.cognitive.microsofttranslator.com";
     String path = "/translate";
     Map<String, String> parameters = {
@@ -45,19 +38,14 @@ class MicrosoftAzureTranslator {
     Map<String, String> headers = {"Ocp-Apim-Subscription-Key": _subscriptionKey, "Ocp-Apim-Subscription-Region": _subscriptionRegion, "Content-Type": "application/json"};
 
     var url = Uri.https(domain, path, parameters);
-    var response = await httpClient.post(url, headers: headers, body: json.encode(items));
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    if (response != null) {
-      if (response.body != null) {
-        var decodedTranslations = [];
-        var decodedData = json.decode(response.body);
-        if (decodedData[0]["translations"] != null) {
-          decodedTranslations = decodedData[0]["translations"];
-        }
-        return decodedTranslations;
+    var response = await http_client.post(url, headers: headers, body: json.encode(items));
+    if (!response.body.isNotEmpty) {
+      var decodedTranslations = [];
+      var decodedData = json.decode(response.body);
+      if (decodedData[0]["translations"] != null) {
+        decodedTranslations = decodedData[0]["translations"];
       }
-      return null;
+      return decodedTranslations;
     }
     return null;
   }

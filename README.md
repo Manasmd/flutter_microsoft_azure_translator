@@ -11,8 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package allows you to quickly set up Microsoft Azure Translator for Flutter. All you need is your `Ocp-Apim-Subscription-Key` & `
 
 ## Features
 
@@ -20,22 +19,31 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Head our to this link tocreate your Azure account and setup translator resources:
+https://learn.microsoft.com/en-gb/azure/cognitive-services/Translator/create-translator-resource
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Initialize the translator by passing the subscriptKey andsubscriptionRegion
 
 ```dart
-const like = 'sample';
+  MicrosoftAzureTranslator.initialize(dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_KEY']!, dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_REGION']!);
+
+  List<dynamic>? translated = await MicrosoftAzureTranslator.instance.translate("how are you?", "en", "yue");
+
+   if (translated != null) {
+      print('received translation from package..');
+      print(translated);
+
+      translated.forEach((translatedItem) {
+        print(translatedItem);
+        print(translatedItem["text"]);
+      });
+    }
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-# flutter_pkg
-# microsoft_azure_translator
+TODO: 
+- Allow passing a list of languages codes to be translated at once
+

@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // MicrosoftAzureTranslator.translate(text, fromLanguageCode, toLanguageCode)
     // MicrosoftAzureTranslator.instance.translate("How are you?", "en", "ta");
-
+    print('testing...');
     if (dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_KEY'] != null && dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_REGION'] != null) {
       MicrosoftAzureTranslator.initialize(dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_KEY']!, dotenv.env['MICROSOFT_AZURE_SUBSCRIPTION_REGION']!);
       translate();
@@ -70,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> translate() async {
+    print('translate is called...');
     List<dynamic>? translated = await MicrosoftAzureTranslator.instance.translate("how are you?", "en", "yue");
 
     if (translated != null) {

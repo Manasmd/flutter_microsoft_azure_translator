@@ -4,18 +4,17 @@ version: 0.0.1
 homepage: https://github.com/Manasmd/flutter_microsoft_azure_translator
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.5
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
